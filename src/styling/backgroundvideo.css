@@ -1,0 +1,15 @@
+/*CSS for the video background component
+
+absolute position ties to the nearest anchor
+z index -1 puts the video 1 layer behind the webpage content
+object fit cover ensures video fills screen
+object position refers to the poster positioning
+*/
+#background-video {
+    position: absolute;
+    z-index: -1;
+    width:  100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}

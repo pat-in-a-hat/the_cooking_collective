@@ -1,9 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import BackgroundVideo from './components/BackgroundVideo';
 
 function App() {
   return (
     <>
+    <BackgroundVideo />
     </>
   );
 }

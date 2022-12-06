@@ -1,9 +1,14 @@
+import React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+import Homepage from './components/Homepage'
 import BackgroundVideo from './components/BackgroundVideo';
 
 function App() {
   return (
     <>
-    <BackgroundVideo />
+    <ChakraProvider>
+        <Homepage />
+    </ChakraProvider>
     </>
   );
 }

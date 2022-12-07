@@ -1,23 +1,32 @@
 import React from 'react'
 import BackgroundVideo from './BackgroundVideo'
 import Navbar from './Navbar.tsx'
-import { Box, Heading, VStack } from '@chakra-ui/react'
+import { Flex, Box, Heading, VStack, StackDivider } from '@chakra-ui/react'
 import '../styling/homepagecss.css'
+import Title from './Title'
 
 export default function Homepage (){
     
+
+    //for vstack 
+    /*divider={<StackDivider borderColor='black' />}
+    spacing = {4}
+    align='stretch'
+    */
     return(
         <>
-            <Box className='video-container'>
-                <BackgroundVideo />
-                <Box>
-                    <VStack>
-                        <Heading fontSize='50px' color='#F7FAFC' align='center' justify='center'>
-                        Welcome to the Cooking Collective
-                        </Heading>
-                    </VStack>
-                </Box>
+        <Navbar />
+        <BackgroundVideo />
+        <VStack>
+            <Box mt='100px'>
+                <Title />
             </Box>
+            <Box>
+                
+            </Box>
+        </VStack>
+        
+        
         </>
     )
 }
@@ -30,5 +39,3 @@ export default function Homepage (){
 //chakra for clean simple UI/UX, page designs
 //navigation to the saved recipes page
 
-//later, change font to 'Playfair Display Bold Italic'
-//need to set font family to do this

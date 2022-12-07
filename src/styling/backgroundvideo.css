@@ -11,3 +11,8 @@ object position refers to the poster positioning
     object-fit: cover;
     object-position: center center;
 }
+
+.video-container {
+    width: 100%;
+    height: 100%;
+}

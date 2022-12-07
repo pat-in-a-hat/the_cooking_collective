@@ -9,3 +9,6 @@
 
 //Maybe this page is recipe list then you can click into each recipe?
 //pull image piece and maybe a short description from other website?
+
+//later, use open graph to create thumbnail links
+//https://javascript.plainenglish.io/make-your-website-have-a-beautiful-thumbnail-link-preview-d610aba7e90e

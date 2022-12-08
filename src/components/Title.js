@@ -12,7 +12,7 @@ export default function Title() {
         <Box>
             <Container centerContent>
                 <Heading fontSize='50px' color='#F7FAFC' align='center' justify='center'>
-                Welcome to the Cooking Collective
+                The Cooking Collective
                 </Heading>
             </Container>
         </Box>

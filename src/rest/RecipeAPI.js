@@ -1,19 +1,19 @@
 import React from 'react'
 import { useState } from 'react'
+import { VStack, Box, StackDivider } from '@chakra-ui/react'
 
 export default function RecipeAPI () {
     //mockAPI db link
     const APILINK = ''
 
     //using a variety of use state hooks here
-    //const [revealed, setRevealed] = useState(false)//to determine whether the saved facts are revealed
     const [updated, setUpdated] = useState(0)//to call fetch each time an item is deleted
     const [loading, setLoading] = useState(true)//so that the returns don't load until after
     const [recipes, setRecipes] = useState([]) //for GET data storage after it is fetched
 
-    //GET using fetch API
+    //GET using fetch API - retrieve data
     useEffect(() => {
-        const fetchRecipes = async () => {
+        const getRecipes = async () => {
             try {
                 const response = await fetch(APILINK)
                 const data = await response.json();
@@ -24,40 +24,86 @@ export default function RecipeAPI () {
                 console.log(error)
             }
         }
-        fetchRecipes()
+        getRecipes()
 
     }, [updated])//recalls useeffect when an item is deleted
 
 
-    //DELETE with fetch API
+    /* TO BE USED FOR LATER VERSIONING - plan to have recipes open to their own pages
+    
+    GET DATA:
+    const getRecipe = async (id) => {
+        
+        try {
+        const response = await fetch (APILINK + `/${id}`)
+        const todo = await response.json()
+        console.log(todo); 
+        } catch (error) {
+        console.log(error)
+        }
+    }*/
+
+    //DELETE with fetch API - delete data
     const deleteRecipe = async (id) => {
-        let response = await fetch (
-            APILINK + `/${id}`, 
-            {
-            method: 'DELETE',
-            })
-        setLoading(true)
-        setUpdated(() => updated + 1)//updated state change retriggers useeffect, therefore refetches
+        try{
+        const response = await fetch (APILINK + `/${id}`, {
+            method: 'DELETE'
+        })
+        const message = await response.json();
+        console.log('deleted' + message)
+        } catch (error) {
+            return error
+        }
+        setLoading(true) //likely need to fix this, don't think it will pull the old render
+        setUpdated(() => updated + 1)//updated state change retriggers useeffect, therefore refetches (desired)
     }
 
-    //POST with fetchAPI
+    //POST with fetchAPI - create data
     const addRecipe = async (link, notes) => {
         console.log('attempting to post to mockAPI')
+
+        try{
         let response = await fetch (APILINK, {
             method: 'POST',
             body: JSON.stringify({
                 link: link,
-                notes: notes,
+                notes: notes
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'
             }
         })
-        console.log('new recipe posted to mockAPI')
-        let data = await response.json();
-        setLoading(true)//not sure if this will actually work to put everything back to loading, we shall see...
-        setUpdated(() => updated + 1)
-        //add newly posted item to the like state?
+            let data = await response.json();
+            console.log(data + 'created')
+            setLoading(true)//not sure if this will actually work to put everything back to loading, we shall see...
+            setUpdated(() => updated + 1)
+        } catch (error){
+        return error;
+        }
+    }
+
+    //PUT with fetchAPI - update data
+    const updateRecipe = async (link, notes, id) => {
+
+        try{
+            const response = await fetch(APILINK + `/${id}`, {
+                method: 'PUT'
+                body: JSON.stringify ({
+                    link: link,
+                    notes: notes
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            const message = await response.json();
+            console.log(todo)
+            setLoading(true)//after testing may put this in use effect block
+            setUpdated(() => updated + 1)
+        } catch (error){
+            return error;
+        }
+
     }
 
     //this stops the main jsx from loading, preventing an error from the like state array being blank
@@ -68,17 +114,6 @@ export default function RecipeAPI () {
             ''
         )
     }
-
-    /*
-    //these two methods open and close the 'liked' items card
-    const revealLikedFacts = () => {
-            //console.log('revealed saved facts')
-            setRevealed(true)
-        }
-    
-    const concealLikedFacts = () => {
-        setRevealed(false)
-    }*/
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -109,3 +144,4 @@ export default function RecipeAPI () {
 //these links helpful pointers for this section
 //https://www.freecodecamp.org/news/how-to-consume-rest-apis-in-react/
 //https://www.w3schools.com/react/react_useeffect.asp
+//https://replit.com/@stepanski/Week-6-Fetch-API#script.js

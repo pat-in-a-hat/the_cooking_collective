@@ -87,7 +87,7 @@ export default function RecipeAPI () {
 
         try{
             const response = await fetch(APILINK + `/${id}`, {
-                method: 'PUT'
+                method: 'PUT',
                 body: JSON.stringify ({
                     link: link,
                     notes: notes

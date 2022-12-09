@@ -1,0 +1,7 @@
+/* Some basic CSS before the Chakra wrapper to ensure webpage is full width and height.
+Will add mobile changes later on
+*/
+
+.app{
+    min-height: 100vh;
+}

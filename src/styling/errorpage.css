@@ -1,0 +1,12 @@
+/* Error Page CSS
+
+Using basic stuff to start here, concepts adapted from react router docs
+https://reactrouter.com/en/main/start/tutorial#adding-a-router
+*/
+
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}

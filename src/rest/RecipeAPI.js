@@ -12,20 +12,21 @@ export default function RecipeAPI () {
     const [recipes, setRecipes] = useState([]) //for GET data storage after it is fetched
 
     //GET using fetch API - retrieve data
-    useEffect(() => {
-        const getRecipes = async () => {
-            try {
-                const response = await fetch(APILINK)
-                const data = await response.json();
-                setRecipes(data)//puts the fetched data into this state array
-                setLoading(false)//triggers the load state so the jsx is then loaded
-            } catch (error){
-                console.log('caught error while fetching')
-                console.log(error)
-            }
+    const getRecipes = async () => {
+        try {
+            const response = await fetch(APILINK)
+            const data = await response.json();
+            setRecipes(data)//puts the fetched data into this state array
+            setLoading(false)//triggers the load state so the jsx is then loaded
+        } catch (error){
+            console.log('caught error while fetching')
+            console.log(error)
         }
-        getRecipes()
+    }
 
+    //using use effect to fetch on load - this may be made redundant by react router
+    useEffect(() => {
+        getRecipes()
     }, [updated])//recalls useeffect when an item is deleted
 
 

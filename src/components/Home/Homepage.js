@@ -1,6 +1,6 @@
 import React from 'react'
 import BackgroundVideo from './BackgroundVideo'
-import Navbar from './Navbar.js'
+import Navbar from '../Navbar.js'
 import { Flex, Box, Heading, VStack, StackDivider } from '@chakra-ui/react'
 import Title from './Title'
 
@@ -15,7 +15,7 @@ export default function Homepage (){
     return(
         <>
         <div>
-        <Navbar />
+        <BackgroundVideo />
         <Title />
         <VStack>
             <Box mt='100px'>

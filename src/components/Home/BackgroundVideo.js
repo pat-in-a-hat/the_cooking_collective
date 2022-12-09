@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styling/backgroundvideo.css'
-import VideoLink from '../assets/piebackground.mp4'
-import PosterLink from '../assets/piebackgroundimage.png'
+import '../../styling/BackgroundVideo.css'
+import VideoLink from '../../assets/piebackground.mp4'
+import PosterLink from '../../assets/piebackgroundimage.png'
 import { Box } from '@chakra-ui/react'
 
 //using local storage for a background video for the homepage

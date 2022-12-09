@@ -1,16 +1,20 @@
 import React from 'react'
-import '../styling/navbar.css'
-import BackgroundVideo from './BackgroundVideo'
+import '../styling/Navbar.css'
+import BackgroundVideo from './Home/BackgroundVideo'
+import { Outlet, Link } from "react-router-dom";
 
 export default function Navbar () {
     return(
         <>
             <div>
                 <ul>
-                    <li><a href='./Homepage.js'>The Cooking Collective</a></li>
-                    <li><a href='./RecipeList.js'>Recipes</a></li>
+                    <li>
+                        <Link to={`/Homepage`}>The Cooking Collective</Link>
+                    </li>
+                    <li>
+                        <Link to={`/Recipes`}>Recipes</Link>
+                    </li>
                 </ul>
-                <BackgroundVideo />
             </div>
         </>
     )

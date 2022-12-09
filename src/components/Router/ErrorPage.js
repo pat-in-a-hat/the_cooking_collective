@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouteError } from "react-router-dom";
 import { Heading, Text, VStack } from '@chakra-ui/react'
-import '../styling/errorpage.css'
+import '../../styling/ErrorPage.css'
 
 export default function ErrorPage() {
   const error = useRouteError();

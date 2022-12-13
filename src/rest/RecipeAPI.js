@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
-import { VStack, Box, StackDivider } from '@chakra-ui/react'
+import { useState, useEffect } from 'react'
+import SavedRecipes from '../components/Recipes/SavedRecipes'
 
 export default function RecipeAPI () {
     //mockAPI db link
@@ -98,7 +98,7 @@ export default function RecipeAPI () {
                 },
             })
             const message = await response.json();
-            console.log(todo)
+            console.log(message)
             setLoading(true)//after testing may put this in use effect block
             setUpdated(() => updated + 1)
         } catch (error){
@@ -116,29 +116,23 @@ export default function RecipeAPI () {
         )
     }
 
-    const handleSubmit = (event) => {
+    /*const handleSubmit = (event) => {
         event.preventDefault()
         addRecipe(link, notes)//might need to rejigger this a bit to properly load
-    }
+    }*/
 
 
     //need to pass this all to something via props (callback)
     return(
         <>
-        <VStack
-            divider={<StackDivider bordercolor='gray.200' />}
-            spacing={8}
-        >
-            {recipes.map((recipe) => {
-                <Box key={recipe.id}>
-                    {recipe.link}
-                    {recipe.notes}
-                </Box>
-            })}
-        </VStack>
-            
+            <SavedRecipes recipes={recipes} />
         </>
     )
+}
+
+export async function loader () {
+    const recipes = await RecipeAPI();
+    return { recipes };
 }
 
 

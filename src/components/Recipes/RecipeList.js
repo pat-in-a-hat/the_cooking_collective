@@ -1,13 +1,12 @@
 import React from 'react'
-import { getRecipes } from '../../rest/RecipeAPI'
+import RecipeAPI from '../../rest/RecipeAPI'
+
 
 export default function RecipeList () {
+    return(
+        <>
+        <RecipeAPI />
+        </>
+    )
 
-
-
-}
-
-export async function loader () {
-    const recipes = await getRecipes();
-    return { recipes };
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styling/Navbar.css'
-import BackgroundVideo from './Home/BackgroundVideo'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar () {
     return(

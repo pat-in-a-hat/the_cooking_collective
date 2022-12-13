@@ -12,3 +12,39 @@
 
 //later, use open graph to create thumbnail links
 //https://javascript.plainenglish.io/make-your-website-have-a-beautiful-thumbnail-link-preview-d610aba7e90e
+
+
+import React from 'react'
+//import { RecipeAPI } from '../../rest/RecipeAPI'
+//import { useLoaderData } from 'react-router-dom';
+import { Heading, Text, VStack, Box, StackDivider } from '@chakra-ui/react'
+
+
+export default function RecipeList ({ recipes }) {
+    return(
+        <>
+        {recipes.length ? (
+            <VStack
+            divider={<StackDivider bordercolor='gray.200' />}
+            spacing={8}
+            >
+                {recipes.map((recipe) => {
+                
+                <Box key={recipe.id}>
+                    {recipe.link}
+                    {recipe.notes}
+                </Box>
+        
+            })}
+            </VStack>
+        ) : (
+            <VStack>
+                <Heading>Looks like you need to get cooking...</Heading>
+                <Text>No recipes saved yet!</Text>
+            </VStack>
+        )
+        }
+        </>
+    )
+
+}

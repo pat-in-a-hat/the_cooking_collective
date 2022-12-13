@@ -17,10 +17,13 @@
 import React from 'react'
 //import { RecipeAPI } from '../../rest/RecipeAPI'
 //import { useLoaderData } from 'react-router-dom';
-import { Heading, Text, VStack, Box, StackDivider, Center } from '@chakra-ui/react'
+import { Heading, Text, VStack, Box, StackDivider, Center, Button, useDisclosure } from '@chakra-ui/react'
+import RecipeModal from './RecipeModal.js'
+
 
 
 export default function RecipeList ({ recipes }) {
+
     return(
         <>
         {recipes.length ? (
@@ -45,6 +48,7 @@ export default function RecipeList ({ recipes }) {
             <VStack>
                     <Heading>Looks like you need to get cooking...</Heading>
                     <Text>No recipes saved yet!</Text>
+                    <RecipeModal/>
             </VStack>
         )
         }

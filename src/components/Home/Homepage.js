@@ -15,16 +15,18 @@ export default function Homepage (){
     return(
         <>
         <div>
-        <BackgroundVideo />
-        <Title />
-        <VStack>
-            <Box mt='100px'>
+            <div>
+                <BackgroundVideo />
                 <Title />
-            </Box>
-            <Box>
-                
-            </Box>
-        </VStack>
+                <VStack>
+                    <Box mt='100px'>
+                        <Title />
+                    </Box>
+                    <Box>
+                        
+                    </Box>
+                </VStack>
+            </div>
         </div>
         
         

@@ -8,7 +8,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: antiquewhite;
+    background-color: #FFFACD;
     opacity: 0.8;
 }
 
@@ -26,5 +26,5 @@ li a {
 }
 
 li a:hover {
-    background-color: bisque;
+    background-color: #ffffe0;
 }

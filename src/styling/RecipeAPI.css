@@ -1,0 +1,31 @@
+/*CSS for recipe page layout*/
+
+
+/*
+styling the loader
+*/
+
+.loader-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    height: 100vh;
+}
+
+#spinner {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+    justify-self: center;
+
+}
+
+.recipe-layout {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.recipes-center{
+    grid-column: 2 / span 1;
+    justify-content: center;
+}

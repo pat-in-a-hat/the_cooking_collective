@@ -1,10 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import SavedRecipes from '../components/Recipes/SavedRecipes'
+import { Spinner } from '@chakra-ui/react'
+import '../styling/RecipeAPI.css'
 
 export default function RecipeAPI () {
     //mockAPI db link
-    const APILINK = ''
+    const APILINK = 'https://634f6de2df22c2af7b512858.mockapi.io/pickem/cookingcollective'
 
     //using a variety of use state hooks here
     const [updated, setUpdated] = useState(0)//to call fetch each time an item is deleted
@@ -24,7 +26,7 @@ export default function RecipeAPI () {
         }
     }
 
-    //using use effect to fetch on load - this may be made redundant by react router
+    //using use effect to fetch on load - need to explore replacing this with react router loader
     useEffect(() => {
         getRecipes()
     }, [updated])//recalls useeffect when an item is deleted
@@ -112,7 +114,16 @@ export default function RecipeAPI () {
     if (loading) {
         //have this return a chakra loading symbol for better UI/UX
         return (
-            ''
+            <div className='loader-layout'>
+                <Spinner
+                    thickness='6px'
+                    speed='0.75s'
+                    emptyColor='gray.200'
+                    color='black'
+                    size='xl'
+                    id='spinner'
+                />      
+            </div>
         )
     }
 
@@ -124,15 +135,17 @@ export default function RecipeAPI () {
 
     //need to pass this all to something via props (callback)
     return(
-        <>
-            <SavedRecipes recipes={recipes} />
-        </>
+        <div className='recipe-layout'>
+            <div className='recipes-center'>
+            <SavedRecipes 
+                recipes={recipes}
+                deleteRecipe={deleteRecipe}
+                addRecipe={addRecipe}
+                updateRecipe={updateRecipe}
+            />
+            </div>
+        </div>
     )
-}
-
-export async function loader () {
-    const recipes = await RecipeAPI();
-    return { recipes };
 }
 
 

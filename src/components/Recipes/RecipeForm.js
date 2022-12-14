@@ -15,13 +15,16 @@ import {
 
 export default function RecipeForm ({ formRef, addRecipe}) {
 
-    const [inputs, setInputs] = useState({})
+    const [inputs, setInputs] = useState({link:'', notes:''})
+
+    console.log(inputs.link)
+    console.log(inputs.notes)
 
     //this allows us to handle multiple form values, passing them to a state
     const handleChange = (event) => {
         const link = event.target.link
         const notes = event.target.notes
-        setInputs(values => ({...values,link:[link],notes:[notes]}))
+        setInputs({link:link, notes:notes})
     }
 
     const handleSubmit = (event) => {
@@ -34,13 +37,13 @@ export default function RecipeForm ({ formRef, addRecipe}) {
     //add is required star later on https://chakra-ui.com/docs/components/form-control/usage
     return(
         <>
-        <Form method='post' onSubmit={handleSubmit}>
+        <Form method='post'>
             <FormControl isInvalid={isError}>
-                <FormLabel for='recipeLink'>Recipe Link:</FormLabel>
+                <FormLabel>Recipe Link:</FormLabel>
                 <Input 
-                    type='url' 
+                    type='text' 
                     name='recipeLink' 
-                    value={inputs.link || ""}
+                    value={inputs.link}
                     onChange={handleChange}
                     placeholder='e.x. https://cooking.nytimes.com/recipes/1019793-one-pot-rice-and-beans'
                 />
@@ -50,11 +53,11 @@ export default function RecipeForm ({ formRef, addRecipe}) {
                     <FormErrorMessage>Recipe link is required.</FormErrorMessage>
                 )}
 
-                <FormLabel for='recipeNotes'>Recipe Notes:</FormLabel>
+                <FormLabel>Recipe Notes:</FormLabel>
                 <Textarea 
                     type='text' 
                     name='recipeNotes' 
-                    value={inputs.notes || ""} 
+                    value={inputs.notes} 
                     onChange={handleChange} 
                     placeholder='Enter your recipe notes here'
                 />

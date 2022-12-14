@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRef } from 'react'
 import {Modal,
     ModalOverlay,
     ModalContent,
@@ -8,10 +9,12 @@ import {Modal,
     ModalCloseButton,
     Button,
     useDisclosure} from '@chakra-ui/react'
+import RecipeForm from './RecipeForm'
 
-export default function RecipeModal () {
+export default function RecipeModal ({ addRecipe }) {
     
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const formRef = useRef(null)
 
     return (
       <>
@@ -20,14 +23,14 @@ export default function RecipeModal () {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>Add a Recipe</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <p>Testing...</p>
+              <RecipeForm formRef={formRef} addRecipe={addRecipe}/>
             </ModalBody>
   
             <ModalFooter>
-                <Button colorScheme='yellow' mr={3} onClick={() => console.log('saved')}>Add Recipe</Button>
+                <Button colorScheme='yellow' mr={3} type='submit' onClick={() => formRef.current.focus()}>Add Recipe</Button>
                 <Button colorScheme='gray' onClick={onClose}>Close</Button>
             </ModalFooter>
           </ModalContent>
@@ -35,3 +38,5 @@ export default function RecipeModal () {
         </>
     )
 }
+
+//<Button colorScheme='yellow' mr={3} onClick={() => console.log('saved')}>Add Recipe</Button>

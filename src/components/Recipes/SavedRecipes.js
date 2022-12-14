@@ -22,7 +22,7 @@ import RecipeModal from './RecipeModal.js'
 
 
 
-export default function RecipeList ({ recipes }) {
+export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, updateRecipe }) {
 
     return(
         <>
@@ -48,7 +48,7 @@ export default function RecipeList ({ recipes }) {
             <VStack>
                     <Heading>Looks like you need to get cooking...</Heading>
                     <Text>No recipes saved yet!</Text>
-                    <RecipeModal/>
+                    <RecipeModal addRecipe={addRecipe}/>
             </VStack>
         )
         }

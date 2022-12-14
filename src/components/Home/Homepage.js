@@ -3,6 +3,7 @@ import BackgroundVideo from './BackgroundVideo'
 import Navbar from '../Navbar.js'
 import { Flex, Box, Heading, VStack, StackDivider } from '@chakra-ui/react'
 import Title from './Title'
+import '../../styling/Homepage.css'
 
 export default function Homepage (){
     
@@ -14,10 +15,9 @@ export default function Homepage (){
     */
     return(
         <>
-        <div>
-            <div>
-                <BackgroundVideo />
-                <Title />
+        <div className='grid-frame'>
+            <BackgroundVideo />
+            <div className='contents-flex'>
                 <VStack>
                     <Box mt='100px'>
                         <Title />

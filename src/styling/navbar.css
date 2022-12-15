@@ -28,3 +28,8 @@ li a {
 li a:hover {
     background-color: #ffffe0;
 }
+
+.topnav-right {
+    float: right;
+    padding: 8px 20px 20px 10px;
+}

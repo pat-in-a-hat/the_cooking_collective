@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styling/Navbar.css'
 import { Link } from "react-router-dom";
+import RecipeModal from './Recipes/RecipeModal';
 
 export default function Navbar () {
     return(
@@ -12,6 +13,9 @@ export default function Navbar () {
                     </li>
                     <li>
                         <Link to={`/Recipes`}>Recipes</Link>
+                    </li>
+                    <li className='topnav-right'>
+                        <RecipeModal />
                     </li>
                 </ul>
             </div>

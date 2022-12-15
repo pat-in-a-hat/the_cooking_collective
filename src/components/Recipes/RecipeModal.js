@@ -20,7 +20,14 @@ export default function RecipeModal ({ addRecipe }) {
       <>
         <Button colorScheme='yellow' onClick={onOpen}>Add Recipe</Button>
   
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal
+        isCentered
+        isOpen={isOpen}
+        onClose={onClose}
+        motionPreset='slideInBottom'
+        scrollBehavior='inside'
+        size='xl'
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Add a Recipe</ModalHeader>
@@ -30,7 +37,6 @@ export default function RecipeModal ({ addRecipe }) {
             </ModalBody>
   
             <ModalFooter>
-                <Button colorScheme='yellow' mr={3} type='submit' onClick={() => formRef.current.focus()}>Add Recipe</Button>
                 <Button colorScheme='gray' onClick={onClose}>Close</Button>
             </ModalFooter>
           </ModalContent>

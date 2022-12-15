@@ -57,7 +57,6 @@ export default function RecipeForm ({ formRef, addRecipe}) {
                 />
             </FormControl>
             <Button colorScheme='yellow' mr={3} type='submit'>Add Recipe</Button>
-            <button ref={formRef} type='submit' style={{display: 'none'}} />
         </form>
         </>
     )

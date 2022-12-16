@@ -8,16 +8,15 @@ import '../../styling/Homepage.css'
 export default function Homepage (){
     
 
-    //for vstack 
-    /*divider={<StackDivider borderColor='black' />}
-    spacing = {4}
-    align='stretch'
-    */
+    //big plans to modernize and build this out further
     return(
         <>
-        <div className='grid-frame'>
+        <div>
             <BackgroundVideo />
+        </div>
+        <div className='grid-frame'>
             <div className='contents-flex'>
+                
                 <VStack>
                     <Box mt='100px'>
                         <Title />
@@ -28,9 +27,6 @@ export default function Homepage (){
                 </VStack>
             </div>
         </div>
-        
-        
-        
         </>
     )
 }

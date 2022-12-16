@@ -10,10 +10,10 @@ export default function BackgroundVideo(){
     //poster attribute replaces video with a photo if loading blocked (happens on mobile)
     //most browsers require muted when autoPlay is used
     return(
-        <Box className='video-container'>
+        <div className='video-container'>
         <video autoPlay loop muted playsInline id='background-video' poster={PosterLink}>
             <source src={VideoLink} type='video/mp4'/>
         </video>
-        </Box>
+        </div>
     )
 }

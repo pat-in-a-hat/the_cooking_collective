@@ -3,6 +3,9 @@
 /*
 Building out a page structure
 */
+.width{
+    max-width: 100%;
+}
 
 .grid-frame {
     display: grid;
@@ -13,5 +16,4 @@ Building out a page structure
 
 .contents-flex{
     grid-column: 2 / span 1;
-
 }

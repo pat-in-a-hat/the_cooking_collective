@@ -7,7 +7,7 @@ import RecipeModal from './Recipes/RecipeModal';
 export default function Navbar () {
     return(
         <>
-            <div>
+            <div className='width'>
                 <ul>
                     <li>
                         <Link to={`/Homepage`}>The Cooking Collective</Link>

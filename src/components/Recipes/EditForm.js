@@ -13,9 +13,9 @@ import {
 //import {Form,} from 'react-router-dom'
 
 
-export default function RecipeForm ({ onClose, addRecipe }) {
+export default function RecipeForm ({ onClose, updateRecipe, id, link, notes }) {
 
-    const [inputs, setInputs] = useState({link:'', notes:''})
+    const [inputs, setInputs] = useState({link:link, notes:notes})
 
     //this allows us to handle multiple form values, passing them to a state
     const handleChange = (event) => {
@@ -24,9 +24,9 @@ export default function RecipeForm ({ onClose, addRecipe }) {
     }
 
     const handleSubmit = (event) => {
-        console.log('handling submit')
+        console.log('handling change')
         event.preventDefault()
-        addRecipe(inputs.link,inputs.notes)
+        updateRecipe(inputs.link, inputs.notes, id)
     }
 
     //add is required star later on https://chakra-ui.com/docs/components/form-control/usage

@@ -19,18 +19,14 @@ import React from 'react'
 //import { useLoaderData } from 'react-router-dom';
 import { Heading, Text, VStack, Box, StackDivider, Center, Button, Flex, Spacer, useDisclosure, Divider } from '@chakra-ui/react'
 import RecipeModal from './RecipeModal.js'
+import EditModal from './EditModal'
 import '../../styling/SavedRecipes.css'
 
 
 
 export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, updateRecipe }) {
 
-    console.log(recipes)
     const recipesArray = [...recipes]
-    console.log(recipesArray)
-    console.log(recipesArray[0])
-    console.log(recipesArray[0].id)
-
 
     return(
         <div>
@@ -41,13 +37,32 @@ export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, update
             height={'100vh'}
             overflow={'auto'}
             >
-                <RecipeModal addRecipe={addRecipe}/>
+                <Box
+                borderWidth='1px'
+                borderRadius='md'
+                >
+                    <Box p='6'>
+                        <Box mt='1'>
+                            <Heading>Welcome to Cooking Collective!</Heading>
+                            <Divider />
+                            <Box mt='4'>
+                                Add your own recipe links and relevent notes to contribute to the project!
+                            </Box>
+                            <Center mt='4'>
+                                <RecipeModal addRecipe={addRecipe}/>
+                            </Center>
+                        </Box>
+                    </Box>
+
+                </Box>
+                
                 
                 {recipesArray.map((recipe) => (
                 <Box 
                 key={recipe.id}
                 borderWidth='1px'
                 borderRadius='md'
+                width={'80%'}
                 >
                     <Box p='6'>
                         <Box mt='1'>
@@ -74,11 +89,15 @@ export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, update
                         <Box mt='5'>
                             <Center>
                                 <Flex>
-                                    <Button colorScheme='yellow'>Edit</Button>
+                                    <EditModal
+                                        updateRecipe={updateRecipe} 
+                                        id={recipe.id} 
+                                        link={recipe.link} 
+                                        notes={recipe.notes}/>
                                 </Flex>
                                 <Spacer />
                                 <Flex>
-                                    <Button colorScheme='gray'>Delete</Button>
+                                    <Button colorScheme='gray' onClick={() => deleteRecipe(recipe.id)}>Delete</Button>
                                 </Flex>
                             </Center>
                         </Box>

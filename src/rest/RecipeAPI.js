@@ -20,16 +20,17 @@ export default function RecipeAPI () {
             const data = await response.json();
             setRecipes(data)//puts the fetched data into this state array
             setLoading(false)//triggers the load state so the jsx is then loaded
+            console.log('fetched from MockAPI')
         } catch (error){
             console.log('caught error while fetching')
             console.log(error)
         }
     }
 
-    //using use effect to fetch on load - need to explore replacing this with react router loader
+    //using useEffect to fetch on load - need to explore replacing this with react router loader
     useEffect(() => {
         getRecipes()
-    }, [updated])//recalls useeffect when an item is deleted
+    }, [updated])//recalls useeffect when an item is deleted or edited
 
 
     /* TO BE USED FOR LATER VERSIONING - plan to have recipes open to their own pages
@@ -48,17 +49,18 @@ export default function RecipeAPI () {
 
     //DELETE with fetch API - delete data
     const deleteRecipe = async (id) => {
+        console.log(id)
         try{
         const response = await fetch (APILINK + `/${id}`, {
             method: 'DELETE'
         })
         const message = await response.json();
-        console.log('deleted' + message)
+        console.log('deleted ' + message)
         } catch (error) {
             return error
         }
-        setLoading(true) //likely need to fix this, don't think it will pull the old render
-        setUpdated(() => updated + 1)//updated state change retriggers useeffect, therefore refetches (desired)
+        setLoading(true)  //better UX to have the loader go again during fetch
+        setUpdated(() => updated + 1)//updated state change retriggers useeffect and fetches updated data
     }
 
     //POST with fetchAPI - create data
@@ -78,14 +80,15 @@ export default function RecipeAPI () {
         })
             let data = await response.json();
             console.log(data + 'created')
-            setLoading(true)//not sure if this will actually work to put everything back to loading, we shall see...
-            setUpdated(() => updated + 1)
+            setLoading(true)//better UX to have the loader go again during fetch
+            setUpdated(() => updated + 1) //updated state change retriggers useeffect and fetches updated data
         } catch (error){
         return error;
         }
     }
 
     //PUT with fetchAPI - update data
+    //at some point would like to do this inline https://www.emgoto.com/react-inline-edit/
     const updateRecipe = async (link, notes, id) => {
 
         try{
@@ -101,8 +104,8 @@ export default function RecipeAPI () {
             })
             const message = await response.json();
             console.log(message)
-            setLoading(true)//after testing may put this in use effect block
-            setUpdated(() => updated + 1)
+            setLoading(true)//better UX to have the loader go again during fetch
+            setUpdated(() => updated + 1) //updated state change retriggers useeffect and fetches updated data
         } catch (error){
             return error;
         }
@@ -127,13 +130,7 @@ export default function RecipeAPI () {
         )
     }
 
-    /*const handleSubmit = (event) => {
-        event.preventDefault()
-        addRecipe(link, notes)//might need to rejigger this a bit to properly load
-    }*/
-
-
-    //need to pass this all to something via props (callback)
+    //passing all these functions to the saved recipes component as props
     return(
         <div className='recipe-layout'>
             <div className='recipes-center'>

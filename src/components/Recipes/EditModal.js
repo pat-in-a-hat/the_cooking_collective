@@ -8,15 +8,15 @@ import {Modal,
     ModalCloseButton,
     Button,
     useDisclosure} from '@chakra-ui/react'
-import RecipeForm from './RecipeForm'
+import EditForm from './EditForm'
 
-export default function RecipeModal ({ addRecipe }) {
+export default function EditModal ({ updateRecipe, id, link, notes }) {
     
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
       <>
-        <Button colorScheme='yellow' onClick={onOpen}>Add Recipe</Button>
+        <Button colorScheme='yellow' onClick={onOpen}>Edit</Button>
   
         <Modal
         isCentered
@@ -31,7 +31,13 @@ export default function RecipeModal ({ addRecipe }) {
             <ModalHeader>Add a Recipe</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <RecipeForm onClose={onClose} addRecipe={addRecipe}/>
+              <EditForm 
+                onClose={onClose} 
+                updateRecipe={updateRecipe} 
+                id={id} 
+                link={link} 
+                notes={notes}
+                />
             </ModalBody>
   
             <ModalFooter>

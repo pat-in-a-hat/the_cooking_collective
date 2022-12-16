@@ -15,6 +15,7 @@ import {
 
 export default function RecipeForm ({ onClose, updateRecipe, id, link, notes }) {
 
+    //usestate hook to manage the input states
     const [inputs, setInputs] = useState({link:link, notes:notes})
 
     //this allows us to handle multiple form values, passing them to a state
@@ -23,13 +24,16 @@ export default function RecipeForm ({ onClose, updateRecipe, id, link, notes }) 
         setInputs({...inputs, [event.target.name]: value})
     }
 
+    //submits put request through recipe api
     const handleSubmit = (event) => {
         console.log('handling change')
         event.preventDefault()
         updateRecipe(inputs.link, inputs.notes, id)
     }
 
-    //add is required star later on https://chakra-ui.com/docs/components/form-control/usage
+    //add isrequired stars later on https://chakra-ui.com/docs/components/form-control/usage
+    //also look into using react router Form behavior here
+    //right now html form with chakra formatting
     return(
         <>
         <form onSubmit={handleSubmit}>
@@ -64,6 +68,3 @@ export default function RecipeForm ({ onClose, updateRecipe, id, link, notes }) 
         </>
     )
 }
-
-//<Button colorScheme='yellow' mr={3} onClick={() => console.log('saved')}>Add Recipe</Button>
-//https://www.w3schools.com/react/react_forms.asp

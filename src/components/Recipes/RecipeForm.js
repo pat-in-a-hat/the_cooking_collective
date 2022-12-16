@@ -12,9 +12,12 @@ import {
   } from '@chakra-ui/react'
 //import {Form,} from 'react-router-dom'
 
+//this form is meant for the recipe creation modal. 
+//need to break both forms down further into base components at some point
 
 export default function RecipeForm ({ onClose, addRecipe }) {
 
+    //usestate hook to handle input state
     const [inputs, setInputs] = useState({link:'', notes:''})
 
     //this allows us to handle multiple form values, passing them to a state
@@ -23,13 +26,15 @@ export default function RecipeForm ({ onClose, addRecipe }) {
         setInputs({...inputs, [event.target.name]: value})
     }
 
+    //pushes new entry to mockapi via recipe api component
     const handleSubmit = (event) => {
         console.log('handling submit')
         event.preventDefault()
         addRecipe(inputs.link,inputs.notes)
     }
 
-    //add is required star later on https://chakra-ui.com/docs/components/form-control/usage
+    //add isrequired star later on https://chakra-ui.com/docs/components/form-control/usage
+    //this form is for the new recipe modal and uses chakra styling
     return(
         <>
         <form onSubmit={handleSubmit}>

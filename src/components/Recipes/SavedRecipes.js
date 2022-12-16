@@ -1,23 +1,7 @@
-//this page to include:
-
-//the saved recipes
-//button to add new saved recipe
-//modal that loads form where you can add recipe link and other information
-
-//ultimately have a share button on the saved recipes
-//this copies link to that recipe page
-
-//Maybe this page is recipe list then you can click into each recipe?
-//pull image piece and maybe a short description from other website?
-
-//later, use open graph to create thumbnail links
-//https://javascript.plainenglish.io/make-your-website-have-a-beautiful-thumbnail-link-preview-d610aba7e90e
-
-
 import React from 'react'
 //import { RecipeAPI } from '../../rest/RecipeAPI'
 //import { useLoaderData } from 'react-router-dom';
-import { Heading, Text, VStack, Box, StackDivider, Center, Button, Flex, Spacer, useDisclosure, Divider } from '@chakra-ui/react'
+import { Heading, Text, VStack, Box, StackDivider, Center, Button, Flex, Spacer, Divider } from '@chakra-ui/react'
 import RecipeModal from './RecipeModal.js'
 import EditModal from './EditModal'
 import '../../styling/SavedRecipes.css'
@@ -26,8 +10,15 @@ import '../../styling/SavedRecipes.css'
 
 export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, updateRecipe }) {
 
+    //taking a shallow copy of the fetched recipes array to prevent potential unwanted alterations
     const recipesArray = [...recipes]
 
+    //we then have a layout with
+    //the new recipe modal
+    //mapped recipe array if it is fetched OR new recipe modal button to add new recipes
+    //each recipe is formatted into a basic Chakra box with an edit button and delete button
+    //the edit button pulls up an edit modal and loads the state into it
+    //the delete button sends a delete request through recipeAPI to mockapi to delete and then refetch
     return(
         <div>
         {(recipesArray.length > 0) ? (
@@ -118,18 +109,19 @@ export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, update
 
 }
 
-/*<VStack
-            divider={<StackDivider bordercolor='gray.200' />}
-            spacing={8}
-            height={'100vh'}
-            overflow={'auto'}
-            ></VStack>*/
+//design and future plan notes
 
-/*
-{recipesArray.map((recipe) => 
-                <Box key={recipe.id}>
-                    {recipe.link}
-                    {recipe.notes}
-                </Box>
-            )}
-*/
+//this page to include:
+
+//the saved recipes
+//button to add new saved recipe
+//modal that loads form where you can add recipe link and other information
+
+//ultimately have a share button on the saved recipes
+//this copies link to that recipe page
+
+//Maybe this page is recipe list then you can click into each recipe?
+//pull image piece and maybe a short description from other website?
+
+//later, use open graph to create thumbnail links
+//https://javascript.plainenglish.io/make-your-website-have-a-beautiful-thumbnail-link-preview-d610aba7e90e

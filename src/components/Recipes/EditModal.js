@@ -12,8 +12,10 @@ import EditForm from './EditForm'
 
 export default function EditModal ({ updateRecipe, id, link, notes }) {
     
+    //chakra hook to manage modal actions
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    //built the open button into the modal component. this then shows wherever I place the modal
     return (
       <>
         <Button colorScheme='yellow' onClick={onOpen}>Edit</Button>

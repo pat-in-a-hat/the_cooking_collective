@@ -12,8 +12,12 @@ import RecipeForm from './RecipeForm'
 
 export default function RecipeModal ({ addRecipe }) {
     
+  //chakra hook for opening and closing the modal
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    //modal for adding recipes that pulls the recipe form in
+    //its open button is the only thing that shows when I call the component 
+    //(until you click it and open the modal)
     return (
       <>
         <Button colorScheme='yellow' onClick={onOpen}>Add Recipe</Button>

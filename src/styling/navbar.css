@@ -16,6 +16,12 @@ li {
     display: inline;
 }
 
+
+/*
+putting the padding layout here cause I can never remember it ':)
+the padding property has 4 values - padding: top right bottom left
+source: w3 schools
+*/
 li a {
     color:firebrick;
     text-align: center;
@@ -29,7 +35,3 @@ li a:hover {
     background-color: #ffffe0;
 }
 
-.topnav-right {
-    float: right;
-    padding: 8px 20px 20px 10px;
-}

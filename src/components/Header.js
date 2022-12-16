@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../assets/piebackgroundimage.png'
 
-//this to be used later on 
+//this to be used later on for better semantic html layout
 export default function Header () {
     return (
         <header>

@@ -17,7 +17,7 @@
 import React from 'react'
 //import { RecipeAPI } from '../../rest/RecipeAPI'
 //import { useLoaderData } from 'react-router-dom';
-import { Heading, Text, VStack, Box, StackDivider, Center, Button, useDisclosure, Divider } from '@chakra-ui/react'
+import { Heading, Text, VStack, Box, StackDivider, Center, Button, Flex, Spacer, useDisclosure, Divider } from '@chakra-ui/react'
 import RecipeModal from './RecipeModal.js'
 import '../../styling/SavedRecipes.css'
 
@@ -49,11 +49,11 @@ export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, update
                 borderWidth='1px'
                 borderRadius='md'
                 >
-                    <Box p='8'>
+                    <Box p='6'>
                         <Box mt='1'>
                             <Heading size='md'>Link</Heading>
                             <Divider />
-                            <Box mt='2'>
+                            <Box mt='2' mb='5'>
                                 <Box
                                 color='blue'
                                 fontWeight='semibold'
@@ -70,6 +70,17 @@ export default function SavedRecipes ({ recipes, deleteRecipe, addRecipe, update
                             <Box mt='2'>
                                 {recipe.notes}
                             </Box>
+                        </Box>
+                        <Box mt='5'>
+                            <Center>
+                                <Flex>
+                                    <Button colorScheme='yellow'>Edit</Button>
+                                </Flex>
+                                <Spacer />
+                                <Flex>
+                                    <Button colorScheme='gray'>Delete</Button>
+                                </Flex>
+                            </Center>
                         </Box>
                     </Box>
                 </Box>
